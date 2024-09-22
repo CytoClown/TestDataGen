@@ -30,7 +30,7 @@ def generate_turkish_iban():
     return iban
 
 def generate_russian_phone_number():
-    return f"+7 ({random.randint(900, 999)}) {random.randint(100, 999)}-{random.randint(10, 99)}-{random.randint(10, 99)}"
+    return f"7{random.randint(900, 999)}{random.randint(100, 999)}{random.randint(10, 99)}{random.randint(10, 99)}"
 
 def generate_phone_number_01():
     return f"01{random.randint(100000000, 999999999)}"
@@ -40,9 +40,15 @@ def generate_upi_id(language):
     name = fake_en.name().lower().replace(' ', '')
     return f"{name}@{random.choice(['ybl', 'oksbi', 'ibl', 'axl'])}"
 
+# def generate_ifsc_code():
+#     bank_codes = ["SBIN", "HDFC", "ICIC", "AXIS", "PUNB"]
+#     return f"{random.choice(bank_codes)}0{random.randint(100000, 999999)}"
+
 def generate_ifsc_code():
-    bank_codes = ["SBIN", "HDFC", "ICIC", "AXIS", "PUNB"]
-    return f"{random.choice(bank_codes)}0{random.randint(100000, 999999)}"
+    ifsc_codes = ["ABHY0065019", "ABHY0065011", "ABHY0065016", "ABHY0065019", 
+                  "AHDC0000173", "ANDB0000010", "ANDB0000150", "ANDB0000631",
+                  "ANDB0001293", "ANDB0002080", "ANDB0002761", "APBL0001001"]
+    return f"{random.choice(ifsc_codes)}"
 
 def generate_utr_number():
     return ''.join([str(random.randint(0, 9)) for _ in range(12)])
@@ -63,7 +69,7 @@ def generate_cuil():
         control = 0
     elif control == 10:
         control = 9
-    return f"{prefix}-{dni}-{control}"
+    return f"{prefix}{dni}{control}"
 
 def generate_card_number_by_bin(bin_prefix):
     number = [int(x) for x in str(bin_prefix)]
